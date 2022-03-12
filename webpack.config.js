@@ -7,7 +7,7 @@ module.exports = {
   entry: path.resolve(__dirname, './src/index.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/bundle.js'
+    filename: '[name]-[contenthash:8].bundle.js'
   },
   devServer: {
     port: 3000,
@@ -29,6 +29,9 @@ module.exports = {
     ]
   },
   resolve: {
-    extends: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    alias: {
+      '@': path.join(__dirname, './src')
+    }
   }
 }

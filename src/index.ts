@@ -1,4 +1,13 @@
-const msg: string = 'hello world'
-console.log(msg)
+import Square from './core/Square'
+import Viewer from './core/Viewer'
+const sq = new Square()
+sq.viewer = new Viewer(sq)
+sq.point = {
+  x: 3,
+  y: 8
+}
 
-export default {}
+sq.point = {
+  x: 3,
+  y: 10
+}

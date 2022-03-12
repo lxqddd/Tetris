@@ -1,1 +1,0 @@
-{"version":3,"file":"js/bundle.js","mappings":";;;;;;AAAa;AACb;AACA","sources":["webpack://tetris/./src/index.ts"],"sourcesContent":["\"use strict\";\r\nvar msg = 'hello world';\r\nconsole.log(msg);\r\n"],"names":[],"sourceRoot":""}
