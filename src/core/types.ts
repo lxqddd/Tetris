@@ -7,3 +7,9 @@ export interface IViewer {
   show(): void
   remove(): void
 }
+
+export interface ISquare {
+  width: number
+  height: number
+  border: string
+}
