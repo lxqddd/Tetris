@@ -13,3 +13,5 @@ export interface ISquare {
   height: number
   border: string
 }
+
+export type Shape = IPoint[]
