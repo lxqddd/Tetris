@@ -1,4 +1,4 @@
-import { IPoint, IViewer } from './types'
+import { IPoint, IViewer } from '../types'
 
 /**
  * 小方块
@@ -36,5 +36,6 @@ export default class Square {
 
   public set viewer(val) {
     this._viewer = val
+    if (this._viewer) this._viewer.show()
   }
 }
