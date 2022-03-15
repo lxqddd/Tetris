@@ -1,6 +1,6 @@
-import { IPoint, Shape } from './types'
-import { getRandom } from './../utils/index'
-import SquareGroup from './Square/SquareGroup'
+import { IPoint, Shape } from '../types'
+import { getRandom } from '../../utils/index'
+import SquareGroup from '../Square/SquareGroup'
 
 /**
  * T形

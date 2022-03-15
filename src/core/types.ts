@@ -48,3 +48,9 @@ export interface ISquare {
  * 形状
  */
 export type Shape = IPoint[]
+
+export enum MoveDirection {
+  down = 'down',
+  left = 'left',
+  right = 'right'
+}
