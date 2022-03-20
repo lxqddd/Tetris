@@ -3,13 +3,9 @@ import Square from './core/Square/Square'
 import Viewer from './core/Viewer/Viewer'
 import './style/index.scss'
 import SquareGroup from './core/Square/SquareGroup'
-import { IPoint } from './core/types'
+import { IPoint, MoveDirection } from './core/types'
 import { createTetris, LineShape, SShape } from './core/Tetris/Tetris'
-
-const square = new Square()
-const viewer = new Viewer(square, $('#app'))
-
-const shape: IPoint[] = SShape
+import { TetrisRules } from './core/Tetris/TetrisRules'
 
 const sqGroup = createTetris({
   x: 3,
@@ -18,4 +14,16 @@ const sqGroup = createTetris({
 
 sqGroup.squares.forEach((sq) => {
   sq.viewer = new Viewer(sq, $('#app'))
+})
+
+$('.down').click(() => {
+  TetrisRules.moveDirection(sqGroup, MoveDirection.down)
+})
+
+$('.left').click(() => {
+  TetrisRules.moveDirection(sqGroup, MoveDirection.left)
+})
+
+$('.right').click(() => {
+  TetrisRules.moveDirection(sqGroup, MoveDirection.right)
 })

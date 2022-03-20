@@ -28,6 +28,10 @@ export default class SquareGroup {
     return this._squares
   }
 
+  public get shape(): Shape {
+    return this._shape
+  }
+
   public get centerPoint(): IPoint {
     return this._centerPoint
   }
