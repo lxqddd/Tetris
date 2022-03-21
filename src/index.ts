@@ -2,9 +2,8 @@ import $ from 'jquery'
 import Square from './core/Square/Square'
 import Viewer from './core/Viewer/Viewer'
 import './style/index.scss'
-import SquareGroup from './core/Square/SquareGroup'
 import { IPoint, MoveDirection } from './core/types'
-import { createTetris, LineShape, SShape } from './core/Tetris/Tetris'
+import { createTetris } from './core/Tetris/Tetris'
 import { TetrisRules } from './core/Tetris/TetrisRules'
 
 const sqGroup = createTetris({

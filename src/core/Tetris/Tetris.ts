@@ -68,10 +68,10 @@ export const SquareShape: Shape = [
  * 直线形
  */
 export const LineShape: Shape = [
+  { x: 0, y: -1 },
   { x: 0, y: 0 },
   { x: 0, y: 1 },
-  { x: 0, y: 2 },
-  { x: 0, y: 3 }
+  { x: 0, y: 2 }
 ]
 
 /**
