@@ -41,6 +41,35 @@ export default class SquareGroup {
    */
   public set centerPoint(v: IPoint) {
     this._centerPoint = v
+    this.setSquarePoints()
+  }
+
+  /**
+   * 旋转之后的形状
+   * @param isClock 旋转方向
+   */
+  afterRotateShape(isClock: boolean): Shape {
+    if (isClock) {
+      // 顺时针旋转
+      return this._shape.map((p) => ({
+        x: -p.y,
+        y: p.x
+      }))
+    } else {
+      // 逆时针旋转
+      return this._shape.map((p) => ({
+        x: p.y,
+        y: -p.x
+      }))
+    }
+  }
+
+  rotate(isClock = true): void {
+    this._shape = this.afterRotateShape(isClock)
+    this.setSquarePoints()
+  }
+
+  setSquarePoints(): void {
     this._shape.forEach((sq, index) => {
       this._squares[index].point = {
         x: this._centerPoint.x + sq.x,

@@ -26,3 +26,7 @@ $('.left').click(() => {
 $('.right').click(() => {
   TetrisRules.moveDirection(sqGroup, MoveDirection.right)
 })
+
+$('.rotate').click(() => {
+  sqGroup.rotate(false)
+})
