@@ -5,79 +5,132 @@ import SquareGroup from '../Square/SquareGroup'
 /**
  * T形
  */
-export const TShape: Shape = [
-  { x: 0, y: -1 },
-  { x: -1, y: 0 },
-  { x: 0, y: 0 },
-  { x: 0, y: 1 }
-]
+export class TShape extends SquareGroup {
+  constructor(_centerPoint: IPoint, _color: string) {
+    super(
+      [
+        { x: 0, y: -1 },
+        { x: -1, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 1 }
+      ],
+      _centerPoint,
+      _color
+    )
+  }
+}
 
 /**
  * L形
  */
-export const LShape: Shape = [
-  { x: -3, y: 0 },
-  { x: -2, y: 0 },
-  { x: -1, y: 0 },
-  { x: 0, y: 0 },
-  { x: 0, y: -1 }
-]
+export class LShape extends SquareGroup {
+  constructor(_centerPoint: IPoint, _color: string) {
+    super(
+      [
+        { x: -3, y: 0 },
+        { x: -2, y: 0 },
+        { x: -1, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: -1 }
+      ],
+      _centerPoint,
+      _color
+    )
+  }
+}
 
 /**
  * 反向L形
  */
-export const LMirrorShape: Shape = [
-  { x: 3, y: 0 },
-  { x: 2, y: 0 },
-  { x: 1, y: 0 },
-  { x: 0, y: 0 },
-  { x: 0, y: -1 }
-]
+export class LMirrorShape extends SquareGroup {
+  constructor(_centerPoint: IPoint, _color: string) {
+    super(
+      [
+        { x: 3, y: 0 },
+        { x: 2, y: 0 },
+        { x: 1, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: -1 }
+      ],
+      _centerPoint,
+      _color
+    )
+  }
+}
 
 /**
  * S形
  */
-export const SShape: Shape = [
-  { x: 1, y: 0 },
-  { x: 0, y: 0 },
-  { x: 0, y: 1 },
-  { x: -1, y: 1 }
-]
+export class SShape extends SquareGroup {
+  constructor(_centerPoint: IPoint, _color: string) {
+    super(
+      [
+        { x: 1, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 1 },
+        { x: -1, y: 1 }
+      ],
+      _centerPoint,
+      _color
+    )
+  }
+}
 
 /**
  * 反向S形
  */
-export const SMirrorShape: Shape = [
-  { x: -1, y: 0 },
-  { x: 0, y: 0 },
-  { x: 0, y: 1 },
-  { x: 1, y: 1 }
-]
-
+export class SMirrorShape extends SquareGroup {
+  constructor(_centerPoint: IPoint, _color: string) {
+    super(
+      [
+        { x: -1, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 1 },
+        { x: 1, y: 1 }
+      ],
+      _centerPoint,
+      _color
+    )
+  }
+}
 /**
  * 方块形
  */
-export const SquareShape: Shape = [
-  { x: 0, y: 0 },
-  { x: 1, y: 0 },
-  { x: 1, y: 1 },
-  { x: 0, y: 1 }
-]
-
+export class SquareShape extends SquareGroup {
+  constructor(_centerPoint: IPoint, _color: string) {
+    super(
+      [
+        { x: 0, y: 0 },
+        { x: 1, y: 0 },
+        { x: 1, y: 1 },
+        { x: 0, y: 1 }
+      ],
+      _centerPoint,
+      _color
+    )
+  }
+}
 /**
  * 直线形
  */
-export const LineShape: Shape = [
-  { x: 0, y: -1 },
-  { x: 0, y: 0 },
-  { x: 0, y: 1 },
-  { x: 0, y: 2 }
-]
-
+export class LineShape extends SquareGroup {
+  constructor(_centerPoint: IPoint, _color: string) {
+    super(
+      [
+        { x: 0, y: -1 },
+        { x: 0, y: 0 },
+        { x: 0, y: 1 },
+        { x: 0, y: 2 }
+      ],
+      _centerPoint,
+      _color
+    )
+  }
+}
 /**
  * 俄罗斯方块的形状
  */
-export const shapes: Shape[] = [
+export const shapes = [
   TShape,
   SShape,
   SMirrorShape,
@@ -99,9 +152,9 @@ export const colors: string[] = ['red', 'yellow', 'skyblue', 'orange']
  */
 export const createTetris = (centerPoint: IPoint) => {
   let randomShape = getRandom(0, shapes.length)
-  const shape = shapes[randomShape]
+  const Shape = shapes[randomShape]
   const randomColor = getRandom(0, colors.length)
   const color = colors[randomColor]
-  const tetris = new SquareGroup(shape, centerPoint, color)
+  const tetris = new Shape(centerPoint, color)
   return tetris
 }
