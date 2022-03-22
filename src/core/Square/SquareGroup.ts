@@ -5,6 +5,7 @@ import Square from './Square'
  */
 export default class SquareGroup {
   private _squares: readonly Square[]
+  protected isClock: boolean = true
 
   constructor(
     private _shape: Shape,
@@ -64,8 +65,8 @@ export default class SquareGroup {
     }
   }
 
-  rotate(isClock = true): void {
-    this._shape = this.afterRotateShape(isClock)
+  rotate(): void {
+    this._shape = this.afterRotateShape(this.isClock)
     this.setSquarePoints()
   }
 

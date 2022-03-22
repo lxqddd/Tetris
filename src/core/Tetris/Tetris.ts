@@ -74,6 +74,10 @@ export class SShape extends SquareGroup {
       _color
     )
   }
+  rotate() {
+    super.rotate()
+    this.isClock = !this.isClock
+  }
 }
 
 /**
@@ -92,6 +96,10 @@ export class SMirrorShape extends SquareGroup {
       _color
     )
   }
+  rotate() {
+    super.rotate()
+    this.isClock = !this.isClock
+  }
 }
 /**
  * 方块形
@@ -109,6 +117,9 @@ export class SquareShape extends SquareGroup {
       _color
     )
   }
+  rotate() {
+    return
+  }
 }
 /**
  * 直线形
@@ -125,6 +136,10 @@ export class LineShape extends SquareGroup {
       _centerPoint,
       _color
     )
+  }
+  rotate() {
+    super.rotate()
+    this.isClock = !this.isClock
   }
 }
 /**
@@ -150,7 +165,7 @@ export const colors: string[] = ['red', 'yellow', 'skyblue', 'orange']
  * @param centerPoint 中心点
  * @returns tetris
  */
-export const createTetris = (centerPoint: IPoint) => {
+export const createTetris = (centerPoint: IPoint): SquareGroup => {
   let randomShape = getRandom(0, shapes.length)
   const Shape = shapes[randomShape]
   const randomColor = getRandom(0, colors.length)
