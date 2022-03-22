@@ -49,8 +49,8 @@ export default class SquareGroup {
    * 旋转之后的形状
    * @param isClock 旋转方向
    */
-  afterRotateShape(isClock: boolean): Shape {
-    if (isClock) {
+  afterRotateShape(): Shape {
+    if (this.isClock) {
       // 顺时针旋转
       return this._shape.map((p) => ({
         x: -p.y,
@@ -66,7 +66,7 @@ export default class SquareGroup {
   }
 
   rotate(): void {
-    this._shape = this.afterRotateShape(this.isClock)
+    this._shape = this.afterRotateShape()
     this.setSquarePoints()
   }
 

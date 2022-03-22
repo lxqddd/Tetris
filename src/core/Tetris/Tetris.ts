@@ -3,6 +3,13 @@ import { getRandom } from '../../utils/index'
 import SquareGroup from '../Square/SquareGroup'
 
 /**
+ * 方块旋转规则：
+ *  S形方块和直线形方块只能在两个方向上旋转
+ *  L形方块可以四旋转四个角度
+ *  方块形不旋转
+ */
+
+/**
  * T形
  */
 export class TShape extends SquareGroup {
@@ -137,6 +144,7 @@ export class LineShape extends SquareGroup {
       _color
     )
   }
+  // 只能在两个方向上旋转
   rotate() {
     super.rotate()
     this.isClock = !this.isClock

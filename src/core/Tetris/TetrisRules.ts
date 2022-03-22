@@ -92,4 +92,13 @@ export class TetrisRules {
       }
     }
   }
+
+  static rotate(tetris: SquareGroup): boolean {
+    const newShape = tetris.afterRotateShape()
+    if (this.canIMove(newShape, tetris.centerPoint)) {
+      tetris.rotate()
+      return true
+    }
+    return false
+  }
 }

@@ -28,5 +28,5 @@ $('.right').click(() => {
 })
 
 $('.rotate').click(() => {
-  sqGroup.rotate()
+  TetrisRules.rotate(sqGroup)
 })
