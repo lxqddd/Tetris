@@ -47,7 +47,6 @@ export default class SquareGroup {
 
   /**
    * 旋转之后的形状
-   * @param isClock 旋转方向
    */
   afterRotateShape(): Shape {
     if (this.isClock) {

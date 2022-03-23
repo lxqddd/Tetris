@@ -1,3 +1,4 @@
+import SquareGroup from './Square/SquareGroup'
 /**
  * 方块坐标接口
  */
@@ -49,8 +50,30 @@ export interface ISquare {
  */
 export type Shape = IPoint[]
 
+// 移动方向
 export enum MoveDirection {
   down = 'down',
   left = 'left',
   right = 'right'
+}
+
+export enum GameStatue {
+  init, // 游戏初始化
+  playing, // 游戏进行中
+  pause, // 游戏暂停
+  over // 游戏结束
+}
+
+export interface IGameViewer {
+  /**
+   * 展示下一个方块对象
+   * @param tetris 要展示的方块对象
+   */
+  showNext(tetris: SquareGroup): void
+
+  /**
+   * 展示切换的方块对象
+   * @param tetris 切换的方块对象
+   */
+  switch(tetris: SquareGroup): void
 }

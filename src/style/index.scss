@@ -5,11 +5,30 @@
 }
 
 #app {
-  position: relative;
-  width: 600px;
-  height: 700px;
-  border: 1px solid #999;
-  margin: 50px auto;
+  display: flex;
+  width: 700px;
+  height: 800px;
+  margin: 100px auto;
+  .panel {
+    position: relative;
+    width: 600px;
+    height: 700px;
+    border: 1px solid #999;
+  }
+  .tip {
+    width: 300px;
+    height: 700px;
+    border: 1px solid #999;
+    border-left: none;
+    box-sizing: border-box;
+    padding-top: 50px;
+    .next {
+      position: relative;
+      height: 100px;
+      width: 150px;
+      margin: 0 auto;
+    }
+  }
 }
 
 .btn-wrap {
