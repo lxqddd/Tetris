@@ -24,7 +24,7 @@ export class Game {
    * 游戏开始
    */
   start() {
-    if ((this._gameStatus = GameStatue.playing)) return
+    if (this._gameStatus === GameStatue.playing) return
     if (!this._curTetris) this.switchSquare()
     this._gameStatus = GameStatue.playing
     this.autoDrop()
