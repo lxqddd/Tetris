@@ -4,6 +4,7 @@ import { createTetris } from '../Tetris/Tetris'
 import { TetrisRules } from './../Tetris/TetrisRules'
 import { IGameViewer } from './../types'
 import { nextPanel } from '../GameConfig'
+import { gamePanel } from './../GameConfig'
 
 /**
  * 游戏类，控制游戏进程
@@ -30,6 +31,12 @@ export class Game {
     this.autoDrop()
   }
 
+  pause() {
+    clearInterval(this._timer)
+    this._timer = null
+    this._gameStatus = GameStatue.pause
+  }
+
   /**
    * 小方块自有下落
    */
@@ -47,7 +54,9 @@ export class Game {
    */
   private switchSquare() {
     this._curTetris = this._nextTetris
+    this.resetCenterPoint(gamePanel.width, this._curTetris)
     this._nextTetris = createTetris({ x: 0, y: 0 })
+    this.resetCenterPoint(nextPanel.width, this._nextTetris)
     this._gameViewer.switch(this._curTetris)
     this._gameViewer.showNext(this._nextTetris)
   }
@@ -58,7 +67,7 @@ export class Game {
    * @param tetris 方块对象
    */
   private resetCenterPoint(width: number, tetris: SquareGroup) {
-    const x = width / 2 - 1
+    const x = Math.ceil(width / 2) - 1
     const y = 0
 
     tetris.centerPoint = { x, y }
