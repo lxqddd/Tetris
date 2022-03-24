@@ -31,14 +31,45 @@ export class Game {
     this.autoDrop()
   }
 
+  /**
+   * 游戏暂停
+   */
   pause() {
+    if (!(this._gameStatus === GameStatue.playing)) return
     clearInterval(this._timer)
     this._timer = null
     this._gameStatus = GameStatue.pause
   }
 
   /**
-   * 小方块自有下落
+   * 控制方块向左移动
+   */
+  public control_left() {
+    this.control_move(MoveDirection.left)
+  }
+
+  /**
+   * 控制方块向右移动
+   */
+  public control_right() {
+    this.control_move(MoveDirection.right)
+  }
+
+  /**
+   * 控制方块向下移动
+   */
+  public control_down() {
+    this.control_move(MoveDirection.down)
+  }
+
+  public control_rotate() {
+    if (this._curTetris && this._gameStatus === GameStatue.playing) {
+      TetrisRules.rotate(this._curTetris)
+    }
+  }
+
+  /**
+   * 小方块自由下落
    */
   private autoDrop() {
     if (this._timer || this._gameStatus !== GameStatue.playing) return
@@ -78,6 +109,12 @@ export class Game {
           y: sq.point.y + 1
         }
       })
+    }
+  }
+
+  private control_move(direction: MoveDirection) {
+    if (this._curTetris && this._gameStatus === GameStatue.playing) {
+      TetrisRules.move(this._curTetris, direction)
     }
   }
 }
