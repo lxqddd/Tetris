@@ -59,7 +59,9 @@ export class Game {
    * 控制方块向下移动
    */
   public control_down() {
-    this.control_move(MoveDirection.down)
+    if (this._curTetris && this._gameStatus === GameStatue.playing) {
+      TetrisRules.moveDirection(this._curTetris, MoveDirection.down)
+    }
   }
 
   public control_rotate() {
