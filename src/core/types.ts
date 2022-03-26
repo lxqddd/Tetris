@@ -83,4 +83,10 @@ export interface IGameViewer {
    * @param game
    */
   init(game: Game): void
+
+  /**
+   * 显示分数
+   * @param score 分数
+   */
+  showScore(score: number): void
 }

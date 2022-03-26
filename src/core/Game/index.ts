@@ -76,8 +76,8 @@ export class Game {
     this._gameStatus = GameStatue.pause
   }
 
-  public get score(): number {
-    return this._score
+  public get gameStatus(): GameStatue {
+    return this._gameStatus
   }
 
   /**
@@ -108,7 +108,7 @@ export class Game {
     }
   }
 
-  public control_rotate() {
+  public controlRotate() {
     if (this._curTetris && this._gameStatus === GameStatue.playing) {
       TetrisRules.rotate(this._curTetris, this._exists)
     }
@@ -182,21 +182,28 @@ export class Game {
   private hitButton() {
     this._exists = this._exists.concat(this._curTetris!.squares)
     const num = TetrisRules.deleteSquares(this._exists)
+    this.addScore(num)
     this.switchTetris()
   }
 
   private addScore(lineNum: number) {
     switch (lineNum) {
       case 0:
-        return
+        break
       case 1:
-        return (this._score += 10)
+        this._score += 10
+        break
       case 2:
-        return (this._score += 15)
+        this._score += 15
+        break
       case 3:
-        return (this._score += 20)
+        this._score += 20
+        break
       case 4:
-        return (this._score += 30)
+        this._score += 30
+        break
     }
+    console.log(this._score)
+    this._gameViewer.showScore(this._score)
   }
 }

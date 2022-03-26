@@ -18,7 +18,7 @@ $('.down').click(() => {
 })
 
 $('.rotate').click(() => {
-  game.control_rotate()
+  game.controlRotate()
 })
 
 $('.start').click(() => {

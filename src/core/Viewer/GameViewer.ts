@@ -1,5 +1,5 @@
 import SquareGroup from '../Square/SquareGroup'
-import { IGameViewer } from '../types'
+import { GameStatue, IGameViewer } from '../types'
 import Viewer from './Viewer'
 import $ from 'jquery'
 import { Game } from './../Game/index'
@@ -19,19 +19,19 @@ export class GameViewer implements IGameViewer {
       width: '200px',
       height: '200px'
     })
-    $('.tip')
-      .append(
-        `<div>
-    ${game.score} 分
-    </div>`
-      )
-      .css({
-        fontSize: '20px',
-        fontWeight: '900',
-        textAlign: 'center'
-      })
+    this.showScore(0)
     $(document).keydown((e) => {
       switch (e.keyCode) {
+        case 13: // 回车控制旋转
+          game.controlRotate()
+          break
+        case 32: // 空格控制开始和暂停
+          if (game.gameStatus === GameStatue.playing) {
+            game.pause()
+          } else {
+            game.start()
+          }
+          break
         case 37:
           game.controlLeft()
           break
@@ -53,6 +53,13 @@ export class GameViewer implements IGameViewer {
     tetris.squares.forEach((sq) => {
       sq.viewer!.remove()
       sq.viewer = new Viewer(sq, this._panel)
+    })
+  }
+  showScore(score: number): void {
+    $('.score').text(`${score} 分`).css({
+      textAlign: 'center',
+      fontWeight: '900',
+      fontSize: '30px'
     })
   }
 }

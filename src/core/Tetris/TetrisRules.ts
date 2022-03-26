@@ -153,8 +153,7 @@ export class TetrisRules {
     let num = 0
     for (let i = minY; i <= maxY; i++) {
       // 删除能删除的行
-      this.deleteLine(exists, i)
-      num++
+      if (this.deleteLine(exists, i)) num++
     }
     return num
   }
