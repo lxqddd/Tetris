@@ -21,9 +21,13 @@ export class GameViewer implements IGameViewer {
     })
     this.showScore(0)
     $(document).keydown((e) => {
+      console.log(e.keyCode)
       switch (e.keyCode) {
         case 13: // 回车控制旋转
           game.controlRotate()
+          break
+        case 27: // ESC 控制结束游戏
+          game.over()
           break
         case 32: // 空格控制开始和暂停
           if (game.gameStatus === GameStatue.playing) {

@@ -76,6 +76,23 @@ export class Game {
     this._gameStatus = GameStatue.pause
   }
 
+  over() {
+    if (this._gameStatus === GameStatue.over) return
+    this._gameStatus = GameStatue.over
+    clearInterval(this._timer)
+    this._timer = null
+    this._exists.forEach((sq) => {
+      if (sq.viewer) sq.viewer.remove()
+    })
+    this._exists = []
+    this._score = 0
+    this._curTetris?.squares.forEach((sq) => {
+      if (sq.viewer) {
+        sq.viewer.remove()
+      }
+    })
+  }
+
   public get gameStatus(): GameStatue {
     return this._gameStatus
   }
@@ -203,7 +220,6 @@ export class Game {
         this._score += 30
         break
     }
-    console.log(this._score)
     this._gameViewer.showScore(this._score)
   }
 }
