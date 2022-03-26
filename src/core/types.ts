@@ -1,4 +1,5 @@
 import SquareGroup from './Square/SquareGroup'
+import { Game } from './Game/index'
 /**
  * 方块坐标接口
  */
@@ -76,4 +77,10 @@ export interface IGameViewer {
    * @param tetris 切换的方块对象
    */
   switch(tetris: SquareGroup): void
+
+  /**
+   * 游戏页面初始化
+   * @param game
+   */
+  init(game: Game): void
 }

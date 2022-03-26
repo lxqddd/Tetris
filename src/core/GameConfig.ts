@@ -1,6 +1,6 @@
 export const gamePanel = {
-  width: 10,
-  height: 20
+  width: 20,
+  height: 30
 }
 
 export const nextPanel = {
