@@ -30,6 +30,19 @@ export class GameViewer implements IGameViewer {
         fontWeight: '900',
         textAlign: 'center'
       })
+    $(document).keydown((e) => {
+      switch (e.keyCode) {
+        case 37:
+          game.controlLeft()
+          break
+        case 39:
+          game.controlRight()
+          break
+        case 40:
+          game.controlDown()
+          break
+      }
+    })
   }
   showNext(tetris: SquareGroup): void {
     tetris.squares.forEach((sq) => {

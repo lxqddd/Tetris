@@ -6,15 +6,15 @@ import $ from 'jquery'
 const game = new Game(new GameViewer())
 
 $('.left').click(() => {
-  game.control_left()
+  game.controlLeft()
 })
 
 $('.right').click(() => {
-  game.control_right()
+  game.controlRight()
 })
 
 $('.down').click(() => {
-  game.control_down()
+  game.controlDown()
 })
 
 $('.rotate').click(() => {
