@@ -11937,7 +11937,13 @@ var LineShape = (function (_super) {
 }(_Square_SquareGroup__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 var shapes = [
-    LineShape
+    TShape,
+    SShape,
+    SMirrorShape,
+    LShape,
+    LMirrorShape,
+    LineShape,
+    SquareShape
 ];
 var colors = ['red', 'yellow', 'skyblue', 'orange'];
 var createTetris = function (centerPoint) {
@@ -12446,4 +12452,4 @@ new _core_Game_index__WEBPACK_IMPORTED_MODULE_1__.Game(new _core_Viewer_GameView
 
 /******/ })()
 ;
-//# sourceMappingURL=main-15f920cf.bundle.js.map
+//# sourceMappingURL=main-4a641291.bundle.js.map
