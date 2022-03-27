@@ -66,7 +66,7 @@ export class Game {
         sq.viewer.remove()
       }
     })
-    this._score = 0
+    this.score = 0
     this._exists = []
     this.createNext()
     this._curTetris = undefined
@@ -105,6 +105,7 @@ export class Game {
       if (sq.viewer) sq.viewer.remove()
     })
     this._exists = []
+    this._gameViewer.onGameOver(this._score)
     this._score = 0
     this._curTetris?.squares.forEach((sq) => {
       if (sq.viewer) {
@@ -117,7 +118,6 @@ export class Game {
       }
     })
     this._duration = levels[0].duration
-    this._gameViewer.onGameOver(this._score)
   }
 
   public get gameStatus(): GameStatue {

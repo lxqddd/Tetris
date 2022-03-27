@@ -154,13 +154,13 @@ export class LineShape extends SquareGroup {
  * 俄罗斯方块的形状
  */
 export const shapes = [
-  TShape,
-  SShape,
-  SMirrorShape,
-  LShape,
-  LMirrorShape,
-  LineShape,
-  SquareShape
+  // TShape,
+  // SShape,
+  // SMirrorShape,
+  // LShape,
+  // LMirrorShape,
+  LineShape
+  // SquareShape
 ]
 
 /**

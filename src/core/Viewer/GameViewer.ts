@@ -82,5 +82,6 @@ export class GameViewer implements IGameViewer {
       display: 'block'
     })
     this._msgDom.text(`游戏结束，得分${score}分`)
+    this.showScore(score)
   }
 }
