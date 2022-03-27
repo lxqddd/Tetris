@@ -1,6 +1,6 @@
 import { MoveDirection, Shape } from '../types'
 import { IPoint } from './../types'
-import { gamePanel } from '../../config/GameConfig'
+import { gamePanel } from '../Viewer/config/GameConfig'
 import SquareGroup from './../Square/SquareGroup'
 import Square from '../Square/Square'
 import { Game } from './../Game/index'

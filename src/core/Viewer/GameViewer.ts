@@ -3,8 +3,8 @@ import { GameStatue, IGameViewer } from '../types'
 import Viewer from './Viewer'
 import $ from 'jquery'
 import { Game } from './../Game/index'
-import { SquareConfig } from '../../config/pageConfig'
-import { gamePanel } from '../../config/GameConfig'
+import { SquareConfig } from './config/pageConfig'
+import { gamePanel } from './config/GameConfig'
 
 export class GameViewer implements IGameViewer {
   private _panel: JQuery<HTMLElement> = $('.panel')

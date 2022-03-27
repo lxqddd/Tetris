@@ -1,4 +1,4 @@
-import { ISquare } from '../core/types'
+import { ISquare } from '../../types'
 
 export const SquareConfig: ISquare = {
   width: 20,
