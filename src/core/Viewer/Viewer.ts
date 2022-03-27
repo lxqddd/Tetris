@@ -12,7 +12,8 @@ export default class Viewer implements IViewer {
         position: 'absolute',
         width: SquareConfig.width,
         height: SquareConfig.height,
-        border: SquareConfig.border
+        border: SquareConfig.border,
+        boxSizing: 'border-box'
       })
     }
     this.dom

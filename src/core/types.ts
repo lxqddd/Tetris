@@ -89,4 +89,19 @@ export interface IGameViewer {
    * @param score 分数
    */
   showScore(score: number): void
+
+  /**
+   * 游戏开始事件
+   */
+  onGameStart(): void
+
+  /**
+   * 游戏暂停事件
+   */
+  onGamePause(): void
+
+  /**
+   * 游戏结束事件
+   */
+  onGameOver(score: number): void
 }

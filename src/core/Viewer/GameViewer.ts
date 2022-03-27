@@ -9,11 +9,12 @@ import { gamePanel } from './../GameConfig'
 export class GameViewer implements IGameViewer {
   private _panel: JQuery<HTMLElement> = $('.panel')
   private _nextDom: JQuery<HTMLElement> = $('.next')
+  private _maskDom: JQuery<HTMLElement> = $('.mask')
+  private _msgDom: JQuery<HTMLElement> = $('.mask .msg')
   init(game: Game): void {
     this._panel.css({
       width: SquareConfig.width * gamePanel.width + 'px',
-      height: SquareConfig.height * gamePanel.height + 'px',
-      background: '#000'
+      height: SquareConfig.height * gamePanel.height + 'px'
     })
     this._nextDom.css({
       width: '200px',
@@ -21,7 +22,6 @@ export class GameViewer implements IGameViewer {
     })
     this.showScore(0)
     $(document).keydown((e) => {
-      console.log(e.keyCode)
       switch (e.keyCode) {
         case 13: // 回车控制旋转
           game.controlRotate()
@@ -65,5 +65,22 @@ export class GameViewer implements IGameViewer {
       fontWeight: '900',
       fontSize: '30px'
     })
+  }
+  onGameStart(): void {
+    this._maskDom.css({
+      display: 'none'
+    })
+  }
+  onGamePause(): void {
+    this._maskDom.css({
+      display: 'block'
+    })
+    this._msgDom.text('游戏暂停')
+  }
+  onGameOver(score: number): void {
+    this._maskDom.css({
+      display: 'block'
+    })
+    this._msgDom.text(`游戏结束，得分${score}分`)
   }
 }

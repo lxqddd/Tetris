@@ -3,7 +3,7 @@ import SquareGroup from './../Square/SquareGroup'
 import { createTetris } from '../Tetris/Tetris'
 import { TetrisRules } from './../Tetris/TetrisRules'
 import { IGameViewer } from './../types'
-import { nextPanel } from '../GameConfig'
+import { levels, nextPanel } from '../GameConfig'
 import { gamePanel } from './../GameConfig'
 import Square from '../Square/Square'
 
@@ -29,6 +29,24 @@ export class Game {
     this._nextTetris = createTetris({ x: 0, y: 0 })
     this.resetCenterPoint(nextPanel.width, this._nextTetris)
     this._gameViewer.showNext(this._nextTetris)
+  }
+
+  private get score() {
+    return this._score
+  }
+
+  private set score(val) {
+    this._score = val
+    this._gameViewer.showScore(this._score)
+    const level = levels.filter((it) => it.score <= this._score).pop()
+    if (level!.duration === this._duration) return
+    if (this._timer) {
+      clearInterval(this._timer)
+      this._timer = null
+      this._duration = level!.duration
+      console.log(this._duration)
+      this.autoDrop()
+    }
   }
 
   /**
@@ -64,6 +82,7 @@ export class Game {
     if (!this._curTetris) this.switchTetris()
     this._gameStatus = GameStatue.playing
     this.autoDrop()
+    this._gameViewer.onGameStart()
   }
 
   /**
@@ -74,10 +93,10 @@ export class Game {
     clearInterval(this._timer)
     this._timer = null
     this._gameStatus = GameStatue.pause
+    this._gameViewer.onGamePause()
   }
 
   over() {
-    if (this._gameStatus === GameStatue.over) return
     this._gameStatus = GameStatue.over
     clearInterval(this._timer)
     this._timer = null
@@ -91,6 +110,12 @@ export class Game {
         sq.viewer.remove()
       }
     })
+    this._nextTetris.squares.forEach((sq) => {
+      if (sq.viewer) {
+        sq.viewer.remove()
+      }
+    })
+    this._gameViewer.onGameOver(this._score)
   }
 
   public get gameStatus(): GameStatue {
@@ -163,6 +188,10 @@ export class Game {
       this._gameStatus = GameStatue.over
       clearInterval(this._timer)
       this._timer = null
+      this._gameViewer.onGameOver(this._score)
+      this._nextTetris.squares.forEach((sq) => {
+        if (sq.viewer) sq.viewer.remove()
+      })
       return
     }
     this.createNext()
@@ -206,20 +235,15 @@ export class Game {
   private addScore(lineNum: number) {
     switch (lineNum) {
       case 0:
-        break
+        return
       case 1:
-        this._score += 10
-        break
+        return (this.score += 10)
       case 2:
-        this._score += 15
-        break
+        return (this.score += 15)
       case 3:
-        this._score += 20
-        break
+        return (this.score += 20)
       case 4:
-        this._score += 30
-        break
+        return (this.score += 30)
     }
-    this._gameViewer.showScore(this._score)
   }
 }
