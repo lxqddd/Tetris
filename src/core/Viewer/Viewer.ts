@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import { IViewer } from '../types'
 import Square from '../Square/Square'
-import { SquareConfig } from './pageConfig'
+import { SquareConfig } from '../../config/pageConfig'
 
 export default class Viewer implements IViewer {
   private dom?: JQuery<HTMLElement>

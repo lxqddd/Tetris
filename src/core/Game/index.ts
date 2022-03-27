@@ -3,8 +3,8 @@ import SquareGroup from './../Square/SquareGroup'
 import { createTetris } from '../Tetris/Tetris'
 import { TetrisRules } from './../Tetris/TetrisRules'
 import { IGameViewer } from './../types'
-import { levels, nextPanel } from '../GameConfig'
-import { gamePanel } from './../GameConfig'
+import { levels, nextPanel } from '../../config/GameConfig'
+import { gamePanel } from '../../config/GameConfig'
 import Square from '../Square/Square'
 
 /**
