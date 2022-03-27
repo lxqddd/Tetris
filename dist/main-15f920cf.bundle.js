@@ -11500,7 +11500,7 @@ var Game = (function () {
                 sq.viewer.remove();
             }
         });
-        this._score = 0;
+        this.score = 0;
         this._exists = [];
         this.createNext();
         this._curTetris = undefined;
@@ -11535,6 +11535,7 @@ var Game = (function () {
                 sq.viewer.remove();
         });
         this._exists = [];
+        this._gameViewer.onGameOver(this._score);
         this._score = 0;
         (_a = this._curTetris) === null || _a === void 0 ? void 0 : _a.squares.forEach(function (sq) {
             if (sq.viewer) {
@@ -11547,7 +11548,6 @@ var Game = (function () {
             }
         });
         this._duration = _Viewer_config_GameConfig__WEBPACK_IMPORTED_MODULE_3__.levels[0].duration;
-        this._gameViewer.onGameOver(this._score);
     };
     Object.defineProperty(Game.prototype, "gameStatus", {
         get: function () {
@@ -11937,13 +11937,7 @@ var LineShape = (function (_super) {
 }(_Square_SquareGroup__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 var shapes = [
-    TShape,
-    SShape,
-    SMirrorShape,
-    LShape,
-    LMirrorShape,
-    LineShape,
-    SquareShape
+    LineShape
 ];
 var colors = ['red', 'yellow', 'skyblue', 'orange'];
 var createTetris = function (centerPoint) {
@@ -12201,6 +12195,7 @@ var GameViewer = (function () {
             display: 'block'
         });
         this._msgDom.text("\u6E38\u620F\u7ED3\u675F\uFF0C\u5F97\u5206".concat(score, "\u5206"));
+        this.showScore(score);
     };
     return GameViewer;
 }());
@@ -12451,4 +12446,4 @@ new _core_Game_index__WEBPACK_IMPORTED_MODULE_1__.Game(new _core_Viewer_GameView
 
 /******/ })()
 ;
-//# sourceMappingURL=main-6f620c21.bundle.js.map
+//# sourceMappingURL=main-15f920cf.bundle.js.map
