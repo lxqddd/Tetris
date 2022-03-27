@@ -16,11 +16,12 @@ export class Game {
   private _curTetris?: SquareGroup
   private _nextTetris: SquareGroup = createTetris({ x: 0, y: 0 })
   private _timer: any
-  private _duration: number = 1000
+  private _duration: number
   private _exists: Square[] = []
   private _score: number = 0
 
   constructor(private _gameViewer: IGameViewer) {
+    this._duration = levels[0].duration
     this._gameViewer.init(this)
     this.createNext()
   }
